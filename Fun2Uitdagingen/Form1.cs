@@ -83,9 +83,9 @@ namespace Fun2Uitdagingen
                            "left join Inventory inv " +
                            "on inv.CharacterID = ch.CharacterID " +
                            "left join Item swpn " +
-                           "on swpn.ItemID = cl.StartWeaponID " +
+                           "on swpn.ItemID = ch.WeaponID " +
                            "left join Item sarmor " +
-                           "on sarmor.ItemID = cl.StartArmorID " +
+                           "on sarmor.ItemID = ch.ArmorID " +
                            "left join Item sshield " +
                            "on sshield.ItemID = cl.StartShieldID";
             dg_sql.DataSource = DBO.GetCharactersDataTable(query);

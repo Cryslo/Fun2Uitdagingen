@@ -28,7 +28,7 @@ namespace Fun2Uitdagingen.Logic
             }
             catch (Exception e)
             {
-                MessageBox.Show("Name already Exists.");
+                MessageBox.Show(e.Message);
             }
             conString.Close();
         }
