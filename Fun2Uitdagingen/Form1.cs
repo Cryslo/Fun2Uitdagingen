@@ -72,7 +72,7 @@ namespace Fun2Uitdagingen
 
         private void GetCharacters()
         {
-            string query = "Select ch.Name, rc.Name, cl.Name, COALESCE(swpn.Name, 'Nog geen item.') As Weapon," +
+            string query = "Select distinct ch.CharacterID, ch.Name, rc.Name, cl.Name, COALESCE(swpn.Name, 'Nog geen item.') As Weapon," +
                            "COALESCE(sarmor.Name, 'Nog geen item.') As Armor," +
                            "COALESCE(sshield.Name, 'Nog geen item.') As Shield " +
                            "from character ch " +
@@ -89,6 +89,12 @@ namespace Fun2Uitdagingen
                            "left join Item sshield " +
                            "on sshield.ItemID = cl.StartShieldID";
             dg_sql.DataSource = DBO.GetCharactersDataTable(query);
+        }
+
+        private void btn_SetLevel_Click(object sender, EventArgs e)
+        {
+            DBO.SetLevelCharacter(Convert.ToInt32(nud_SetLevel.Value), Convert.ToInt32(nud_CharID.Value));
+            GetCharacters();
         }
     }
 }

@@ -42,9 +42,16 @@
             this.nud_damage = new System.Windows.Forms.NumericUpDown();
             this.btn_repair = new System.Windows.Forms.Button();
             this.nud_repair = new System.Windows.Forms.NumericUpDown();
+            this.nud_SetLevel = new System.Windows.Forms.NumericUpDown();
+            this.btn_SetLevel = new System.Windows.Forms.Button();
+            this.nud_CharID = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dg_sql)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_damage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_repair)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_SetLevel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_CharID)).BeginInit();
             this.SuspendLayout();
             // 
             // crt_char_btn
@@ -187,11 +194,58 @@
             this.nud_repair.Size = new System.Drawing.Size(37, 20);
             this.nud_repair.TabIndex = 15;
             // 
+            // nud_SetLevel
+            // 
+            this.nud_SetLevel.Location = new System.Drawing.Point(606, 105);
+            this.nud_SetLevel.Name = "nud_SetLevel";
+            this.nud_SetLevel.Size = new System.Drawing.Size(37, 20);
+            this.nud_SetLevel.TabIndex = 16;
+            // 
+            // btn_SetLevel
+            // 
+            this.btn_SetLevel.Location = new System.Drawing.Point(649, 87);
+            this.btn_SetLevel.Name = "btn_SetLevel";
+            this.btn_SetLevel.Size = new System.Drawing.Size(91, 23);
+            this.btn_SetLevel.TabIndex = 17;
+            this.btn_SetLevel.Text = "Set Charlevel";
+            this.btn_SetLevel.UseVisualStyleBackColor = true;
+            this.btn_SetLevel.Click += new System.EventHandler(this.btn_SetLevel_Click);
+            // 
+            // nud_CharID
+            // 
+            this.nud_CharID.Location = new System.Drawing.Point(606, 82);
+            this.nud_CharID.Name = "nud_CharID";
+            this.nud_CharID.Size = new System.Drawing.Size(37, 20);
+            this.nud_CharID.TabIndex = 18;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(567, 105);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(33, 13);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Level";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(564, 82);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "CharID";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(752, 503);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.nud_CharID);
+            this.Controls.Add(this.btn_SetLevel);
+            this.Controls.Add(this.nud_SetLevel);
             this.Controls.Add(this.nud_repair);
             this.Controls.Add(this.btn_repair);
             this.Controls.Add(this.nud_damage);
@@ -211,6 +265,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dg_sql)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_damage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_repair)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_SetLevel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_CharID)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,6 +288,11 @@
         private System.Windows.Forms.NumericUpDown nud_damage;
         private System.Windows.Forms.Button btn_repair;
         private System.Windows.Forms.NumericUpDown nud_repair;
+        private System.Windows.Forms.NumericUpDown nud_SetLevel;
+        private System.Windows.Forms.Button btn_SetLevel;
+        private System.Windows.Forms.NumericUpDown nud_CharID;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 

@@ -33,6 +33,18 @@ namespace Fun2Uitdagingen.Logic
             conString.Close();
         }
 
+        public static void SetLevelCharacter(int level, int charID)
+        {
+            string query = "UPDATE[dbo].[Progress] SET[Level] = " + level + " where CharacterID = " + charID;
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = query;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = conString;
+            conString.Open();
+            cmd.ExecuteNonQuery();
+            conString.Close();
+        }
+
         public static void ExecuteDamageToItem(int ItemID)
         {
             SqlCommand cmd = new SqlCommand("DamageDurability", conString);
