@@ -47,6 +47,7 @@
             this.nud_CharID = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.getLoot = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dg_sql)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_damage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_repair)).BeginInit();
@@ -86,7 +87,8 @@
             this.dg_sql.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg_sql.Location = new System.Drawing.Point(12, 283);
             this.dg_sql.Name = "dg_sql";
-            this.dg_sql.Size = new System.Drawing.Size(728, 208);
+            this.dg_sql.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dg_sql.Size = new System.Drawing.Size(1032, 208);
             this.dg_sql.TabIndex = 3;
             this.dg_sql.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_sql_CellContentClick);
             // 
@@ -152,7 +154,7 @@
             // 
             // btn_getitems
             // 
-            this.btn_getitems.Location = new System.Drawing.Point(665, 252);
+            this.btn_getitems.Location = new System.Drawing.Point(969, 187);
             this.btn_getitems.Name = "btn_getitems";
             this.btn_getitems.Size = new System.Drawing.Size(75, 23);
             this.btn_getitems.TabIndex = 10;
@@ -162,7 +164,7 @@
             // 
             // btn_damage
             // 
-            this.btn_damage.Location = new System.Drawing.Point(649, 223);
+            this.btn_damage.Location = new System.Drawing.Point(953, 158);
             this.btn_damage.Name = "btn_damage";
             this.btn_damage.Size = new System.Drawing.Size(91, 23);
             this.btn_damage.TabIndex = 11;
@@ -172,14 +174,14 @@
             // 
             // nud_damage
             // 
-            this.nud_damage.Location = new System.Drawing.Point(606, 224);
+            this.nud_damage.Location = new System.Drawing.Point(910, 159);
             this.nud_damage.Name = "nud_damage";
             this.nud_damage.Size = new System.Drawing.Size(37, 20);
             this.nud_damage.TabIndex = 13;
             // 
             // btn_repair
             // 
-            this.btn_repair.Location = new System.Drawing.Point(649, 194);
+            this.btn_repair.Location = new System.Drawing.Point(953, 129);
             this.btn_repair.Name = "btn_repair";
             this.btn_repair.Size = new System.Drawing.Size(91, 23);
             this.btn_repair.TabIndex = 14;
@@ -189,23 +191,23 @@
             // 
             // nud_repair
             // 
-            this.nud_repair.Location = new System.Drawing.Point(606, 194);
+            this.nud_repair.Location = new System.Drawing.Point(910, 129);
             this.nud_repair.Name = "nud_repair";
             this.nud_repair.Size = new System.Drawing.Size(37, 20);
             this.nud_repair.TabIndex = 15;
             // 
             // nud_SetLevel
             // 
-            this.nud_SetLevel.Location = new System.Drawing.Point(606, 105);
+            this.nud_SetLevel.Location = new System.Drawing.Point(342, 185);
             this.nud_SetLevel.Name = "nud_SetLevel";
             this.nud_SetLevel.Size = new System.Drawing.Size(37, 20);
             this.nud_SetLevel.TabIndex = 16;
             // 
             // btn_SetLevel
             // 
-            this.btn_SetLevel.Location = new System.Drawing.Point(649, 87);
+            this.btn_SetLevel.Location = new System.Drawing.Point(385, 162);
             this.btn_SetLevel.Name = "btn_SetLevel";
-            this.btn_SetLevel.Size = new System.Drawing.Size(91, 23);
+            this.btn_SetLevel.Size = new System.Drawing.Size(102, 44);
             this.btn_SetLevel.TabIndex = 17;
             this.btn_SetLevel.Text = "Set Charlevel";
             this.btn_SetLevel.UseVisualStyleBackColor = true;
@@ -213,7 +215,7 @@
             // 
             // nud_CharID
             // 
-            this.nud_CharID.Location = new System.Drawing.Point(606, 82);
+            this.nud_CharID.Location = new System.Drawing.Point(342, 162);
             this.nud_CharID.Name = "nud_CharID";
             this.nud_CharID.Size = new System.Drawing.Size(37, 20);
             this.nud_CharID.TabIndex = 18;
@@ -221,7 +223,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(567, 105);
+            this.label4.Location = new System.Drawing.Point(303, 185);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
             this.label4.TabIndex = 19;
@@ -230,17 +232,28 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(564, 82);
+            this.label5.Location = new System.Drawing.Point(300, 162);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 13);
             this.label5.TabIndex = 20;
             this.label5.Text = "CharID";
             // 
+            // getLoot
+            // 
+            this.getLoot.Location = new System.Drawing.Point(342, 212);
+            this.getLoot.Name = "getLoot";
+            this.getLoot.Size = new System.Drawing.Size(145, 44);
+            this.getLoot.TabIndex = 21;
+            this.getLoot.Text = "Kill Enemy";
+            this.getLoot.UseVisualStyleBackColor = true;
+            this.getLoot.Click += new System.EventHandler(this.getLoot_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(752, 503);
+            this.ClientSize = new System.Drawing.Size(1056, 511);
+            this.Controls.Add(this.getLoot);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.nud_CharID);
@@ -262,6 +275,7 @@
             this.Controls.Add(this.crt_char_btn);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dg_sql)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_damage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_repair)).EndInit();
@@ -293,6 +307,7 @@
         private System.Windows.Forms.NumericUpDown nud_CharID;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button getLoot;
     }
 }
 

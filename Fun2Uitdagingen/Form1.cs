@@ -72,7 +72,7 @@ namespace Fun2Uitdagingen
 
         private void GetCharacters()
         {
-            string query = "Select distinct ch.CharacterID, ch.Name, rc.Name, cl.Name, COALESCE(swpn.Name, 'Nog geen item.') As Weapon," +
+            string query = "Select distinct ch.CharacterID, ch.Level, ch.Name, rc.Name, cl.Name, COALESCE(swpn.Name, 'Nog geen item.') As Weapon," +
                            "COALESCE(sarmor.Name, 'Nog geen item.') As Armor," +
                            "COALESCE(sshield.Name, 'Nog geen item.') As Shield " +
                            "from character ch " +
@@ -89,12 +89,26 @@ namespace Fun2Uitdagingen
                            "left join Item sshield " +
                            "on sshield.ItemID = cl.StartShieldID";
             dg_sql.DataSource = DBO.GetCharactersDataTable(query);
+            dg_sql.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void btn_SetLevel_Click(object sender, EventArgs e)
         {
             DBO.SetLevelCharacter(Convert.ToInt32(nud_SetLevel.Value), Convert.ToInt32(nud_CharID.Value));
             GetCharacters();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void getLoot_Click(object sender, EventArgs e)
+        {
+            int itemdropid = DBO.GetItemDrop(Convert.ToInt32(nud_CharID.Value));
+            string query = "SELECT name FROM item where itemID = " + itemdropid;
+            DataTable item = DBO.GetItemFromDB(query);
+            dg_sql.DataSource = item;
+            dg_sql.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
     }
 }

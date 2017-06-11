@@ -43,6 +43,15 @@ namespace Fun2Uitdagingen.Logic
             conString.Open();
             cmd.ExecuteNonQuery();
             conString.Close();
+
+            query = "UPDATE [dbo].[Character] SET[Level] = " + level + " where CharacterID = " + charID;
+            cmd = new SqlCommand();
+            cmd.CommandText = query;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = conString;
+            conString.Open();
+            cmd.ExecuteNonQuery();
+            conString.Close();
         }
 
         public static void ExecuteDamageToItem(int ItemID)
@@ -53,6 +62,27 @@ namespace Fun2Uitdagingen.Logic
             conString.Open();
             cmd.ExecuteNonQuery();
             conString.Close();
+        }
+
+        public static int GetItemDrop(int CharID)
+        {
+            SqlCommand cmd = new SqlCommand("GetItemDropProc", conString);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            var sendparameter = cmd.Parameters.Add(new SqlParameter("@CharacterID", CharID));
+            sendparameter.Direction = ParameterDirection.Input;
+
+            var returnParameter = cmd.Parameters.Add("@ItemName", SqlDbType.VarChar, 255);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+
+            conString.Open();
+
+            cmd.ExecuteNonQuery();
+            var result = returnParameter.Value;
+
+            conString.Close();
+
+            return Convert.ToInt32(result);
         }
 
         public static void ExecuteRepairDurability(int ItemID)
@@ -80,6 +110,23 @@ namespace Fun2Uitdagingen.Logic
                 }
                 conString.Close();
                 return t1;
+        }
+
+        public static DataTable GetItemFromDB(string query)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = query;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = conString;
+
+            conString.Open();
+            DataTable t1 = new DataTable();
+            using (SqlDataAdapter a = new SqlDataAdapter(cmd))
+            {
+                a.Fill(t1);
+            }
+            conString.Close();
+            return t1;
         }
     }
 }
