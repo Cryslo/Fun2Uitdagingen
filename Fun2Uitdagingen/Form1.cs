@@ -110,5 +110,26 @@ namespace Fun2Uitdagingen
             dg_sql.DataSource = item;
             dg_sql.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
+
+        private void btn_GetItemsAboveLvl_Click(object sender, EventArgs e)
+        {
+            DataTable item = DBO.GetItemsAboveLevel((int) nud_gial.Value);
+            dg_sql.DataSource = item;
+            dg_sql.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        }
+
+        private void btn_selectView_Click(object sender, EventArgs e)
+        {
+            DataTable item = DBO.SelectView();
+            dg_sql.DataSource = item;
+            dg_sql.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        }
+
+        private void btn_selectFunction_Click(object sender, EventArgs e)
+        {
+            DataTable item = DBO.SelectFunction();
+            dg_sql.DataSource = item;
+            dg_sql.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        }
     }
 }

@@ -48,11 +48,16 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.getLoot = new System.Windows.Forms.Button();
+            this.btn_GetItemsAboveLvl = new System.Windows.Forms.Button();
+            this.nud_gial = new System.Windows.Forms.NumericUpDown();
+            this.btn_selectView = new System.Windows.Forms.Button();
+            this.btn_selectFunction = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dg_sql)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_damage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_repair)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_SetLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_CharID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_gial)).BeginInit();
             this.SuspendLayout();
             // 
             // crt_char_btn
@@ -248,11 +253,52 @@
             this.getLoot.UseVisualStyleBackColor = true;
             this.getLoot.Click += new System.EventHandler(this.getLoot_Click);
             // 
+            // btn_GetItemsAboveLvl
+            // 
+            this.btn_GetItemsAboveLvl.Location = new System.Drawing.Point(546, 186);
+            this.btn_GetItemsAboveLvl.Name = "btn_GetItemsAboveLvl";
+            this.btn_GetItemsAboveLvl.Size = new System.Drawing.Size(109, 20);
+            this.btn_GetItemsAboveLvl.TabIndex = 22;
+            this.btn_GetItemsAboveLvl.Text = "GetItemsAboveLvl";
+            this.btn_GetItemsAboveLvl.UseVisualStyleBackColor = true;
+            this.btn_GetItemsAboveLvl.Click += new System.EventHandler(this.btn_GetItemsAboveLvl_Click);
+            // 
+            // nud_gial
+            // 
+            this.nud_gial.Location = new System.Drawing.Point(506, 186);
+            this.nud_gial.Name = "nud_gial";
+            this.nud_gial.Size = new System.Drawing.Size(34, 20);
+            this.nud_gial.TabIndex = 23;
+            // 
+            // btn_selectView
+            // 
+            this.btn_selectView.Location = new System.Drawing.Point(546, 212);
+            this.btn_selectView.Name = "btn_selectView";
+            this.btn_selectView.Size = new System.Drawing.Size(109, 26);
+            this.btn_selectView.TabIndex = 24;
+            this.btn_selectView.Text = "Select View";
+            this.btn_selectView.UseVisualStyleBackColor = true;
+            this.btn_selectView.Click += new System.EventHandler(this.btn_selectView_Click);
+            // 
+            // btn_selectFunction
+            // 
+            this.btn_selectFunction.Location = new System.Drawing.Point(546, 245);
+            this.btn_selectFunction.Name = "btn_selectFunction";
+            this.btn_selectFunction.Size = new System.Drawing.Size(109, 32);
+            this.btn_selectFunction.TabIndex = 25;
+            this.btn_selectFunction.Text = "Select Function";
+            this.btn_selectFunction.UseVisualStyleBackColor = true;
+            this.btn_selectFunction.Click += new System.EventHandler(this.btn_selectFunction_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1056, 511);
+            this.Controls.Add(this.btn_selectFunction);
+            this.Controls.Add(this.btn_selectView);
+            this.Controls.Add(this.nud_gial);
+            this.Controls.Add(this.btn_GetItemsAboveLvl);
             this.Controls.Add(this.getLoot);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -281,6 +327,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_repair)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_SetLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_CharID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_gial)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -308,6 +355,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button getLoot;
+        private System.Windows.Forms.Button btn_GetItemsAboveLvl;
+        private System.Windows.Forms.NumericUpDown nud_gial;
+        private System.Windows.Forms.Button btn_selectView;
+        private System.Windows.Forms.Button btn_selectFunction;
     }
 }
 

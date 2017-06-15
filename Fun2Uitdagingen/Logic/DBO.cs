@@ -21,7 +21,7 @@ namespace Fun2Uitdagingen.Logic
             cmd.Parameters.Add(new SqlParameter("@ClassID", classid));
             cmd.Parameters.Add(new SqlParameter("@RaceID", raceid));
             cmd.Parameters.Add(new SqlParameter("@Name", name));
-            conString.Open();
+            OpenConnection();
             try
             {
                 cmd.ExecuteNonQuery();
@@ -30,7 +30,7 @@ namespace Fun2Uitdagingen.Logic
             {
                 MessageBox.Show(e.Message);
             }
-            conString.Close();
+            CloseConnection();
         }
 
         public static void SetLevelCharacter(int level, int charID)
@@ -40,18 +40,18 @@ namespace Fun2Uitdagingen.Logic
             cmd.CommandText = query;
             cmd.CommandType = CommandType.Text;
             cmd.Connection = conString;
-            conString.Open();
+            OpenConnection();
             cmd.ExecuteNonQuery();
-            conString.Close();
+            CloseConnection();
 
             query = "UPDATE [dbo].[Character] SET[Level] = " + level + " where CharacterID = " + charID;
             cmd = new SqlCommand();
             cmd.CommandText = query;
             cmd.CommandType = CommandType.Text;
             cmd.Connection = conString;
-            conString.Open();
+            OpenConnection();
             cmd.ExecuteNonQuery();
-            conString.Close();
+            CloseConnection();
         }
 
         public static void ExecuteDamageToItem(int ItemID)
@@ -59,9 +59,9 @@ namespace Fun2Uitdagingen.Logic
             SqlCommand cmd = new SqlCommand("DamageDurability", conString);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@ItemID", ItemID));
-            conString.Open();
+            OpenConnection();
             cmd.ExecuteNonQuery();
-            conString.Close();
+            CloseConnection();
         }
 
         public static int GetItemDrop(int CharID)
@@ -74,13 +74,11 @@ namespace Fun2Uitdagingen.Logic
 
             var returnParameter = cmd.Parameters.Add("@ItemName", SqlDbType.VarChar, 255);
             returnParameter.Direction = ParameterDirection.ReturnValue;
-
-            conString.Open();
+            OpenConnection();
 
             cmd.ExecuteNonQuery();
             var result = returnParameter.Value;
-
-            conString.Close();
+            CloseConnection();
 
             return Convert.ToInt32(result);
         }
@@ -90,9 +88,9 @@ namespace Fun2Uitdagingen.Logic
             SqlCommand cmd = new SqlCommand("RepairDurability", conString);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@ItemID", ItemID));
-            conString.Open();
+            OpenConnection();
             cmd.ExecuteNonQuery();
-            conString.Close();
+            CloseConnection();
         }
 
         public static DataTable GetCharactersDataTable(string query)
@@ -101,14 +99,13 @@ namespace Fun2Uitdagingen.Logic
                 cmd.CommandText = query;
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = conString;
-
-                conString.Open();
+                OpenConnection();
                 DataTable t1 = new DataTable();
                 using (SqlDataAdapter a = new SqlDataAdapter(cmd))
                 {
                     a.Fill(t1);
                 }
-                conString.Close();
+                CloseConnection();
                 return t1;
         }
 
@@ -119,14 +116,99 @@ namespace Fun2Uitdagingen.Logic
             cmd.CommandType = CommandType.Text;
             cmd.Connection = conString;
 
-            conString.Open();
+            OpenConnection();
             DataTable t1 = new DataTable();
             using (SqlDataAdapter a = new SqlDataAdapter(cmd))
             {
                 a.Fill(t1);
             }
-            conString.Close();
+            CloseConnection();
             return t1;
+
+        }
+
+        public static DataTable GetItemsAboveLevel(int i)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "Select * from GetItemsAboveLevel(@id)";
+            cmd.Parameters.AddWithValue("@id", i);
+            cmd.Connection = conString;
+
+            OpenConnection();
+            DataTable t1 = new DataTable();
+            using (SqlDataAdapter a = new SqlDataAdapter(cmd))
+            {
+                a.Fill(t1);
+            }
+
+            CloseConnection();
+            return t1;
+        }
+        public static DataTable SelectView()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "select * from char_view";
+            cmd.Connection = conString;
+
+            OpenConnection();
+            DataTable t1 = new DataTable();
+            using (SqlDataAdapter a = new SqlDataAdapter(cmd))
+            {
+                a.Fill(t1);
+            }
+
+            CloseConnection();
+            return t1;
+        }
+        public static DataTable SelectFunction()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "select dbo.AddTitleToChar(name) as Name from character";
+            cmd.Connection = conString;
+
+            OpenConnection();
+            DataTable t1 = new DataTable();
+            using (SqlDataAdapter a = new SqlDataAdapter(cmd))
+            {
+                a.Fill(t1);
+            }
+
+            CloseConnection();
+            return t1;
+        }
+
+
+        public static bool OpenConnection()
+        {
+            var success = true;
+            try
+            {
+                conString.Open();
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(@"Error while connecting to database: " + e.Message);
+                success = false;
+            }
+
+            return success;
+        }
+
+
+        public static bool CloseConnection()
+        {
+            var success = true;
+            try
+            {
+                conString.Close();
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(@"Error while disconnecting from database: " + e.Message);
+                success = false;
+            }
+
+            return success;
         }
     }
 }
